@@ -1,12 +1,14 @@
+import { useState } from 'react'
 import './navbar.scss'
-import logo from '../../assets/logo.png'
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false)
+
   return (
     <nav>
         <div className='left'>
           <a href="" className='logo'>
-            <img src={logo} alt="Logo" />
+            <img src='/logo.png' alt="Logo" />
             <span>RealEstate</span>
           </a>
           <a href="">Home</a>
@@ -17,6 +19,17 @@ const Navbar = () => {
         <div className='right'>
           <a href="">Sign In</a>
           <a href="" className='sign-up'>Sign Up</a>
+          <div className='menu-icon'>
+            <img src="/menu.png" alt="" onClick={() => setOpen((prev) => !prev)}/>
+          </div>
+          <div className={open ? 'menu active' : 'menu'}>
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Contact</a>
+            <a href="">Agents</a>
+            <a href="">Sign In</a>
+            <a href="">Sign Up</a>
+          </div>
         </div>
     </nav>
   )
