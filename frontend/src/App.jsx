@@ -1,11 +1,12 @@
-import './App.css'
+import './layout.scss'
+
 
 function App() {
 
   return (
-    <>
-      <p>Hello</p>
-    </>
+    <div className="layout">
+      hello
+    </div>
   )
 }
 
