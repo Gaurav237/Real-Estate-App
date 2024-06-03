@@ -1,8 +1,29 @@
 import React from "react";
 import "./listPage.scss";
+import { listData } from "../../lib/dummydata";
+import Filter from "../../components/filter/Filter";
+import Card from "../../components/card/Card";
 
 const ListPage = () => {
-  return <div>List page</div>;
-};
+  const data = listData;
+  
+  return (
+    <div className="list-page">
+      <div className="list-container">
+        <div className="wrapper">
+          <Filter />
 
-export default ListPage;
+          {data.map(item => (
+            <Card key={item.id} />
+          ))}
+          
+        </div>
+      </div>
+      <div className="map-container">
+        Map
+      </div>
+    </div>
+  )
+}
+
+export default ListPage
