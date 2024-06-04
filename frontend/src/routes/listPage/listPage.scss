@@ -1,22 +1,39 @@
 .list-page {
+  height: 100%;
+  display: flex;
+
+  .list-container {
+    flex: 3;
+
+    .wrapper {
+      height: 100%;
+      padding-right: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      overflow-y: scroll;
+      padding-bottom: 50px;
+
+      /* Scrollbar Styles */
+      &::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 10px;
+        border: 3px solid white;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    }
+  }
+
+  .map-container {
+    flex: 2;
     height: 100%;
-    display: flex;
-
-    .list-container {
-        flex: 3;
-
-        .wrapper {
-            height: 100%;
-            padding-right: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-            overflow-y: scroll;
-        }
-    }
-
-    .map-container {
-        flex: 2;
-        background-color: #fcf5f3;
-    }
+    background-color: #fcf5f3;
+  }
 }
