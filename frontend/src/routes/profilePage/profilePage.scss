@@ -1,3 +1,79 @@
 .profile-page {
+  display: flex;
+  height: 100%;
 
+  .details {
+    flex: 3;
+    overflow-y: scroll;
+    padding-bottom: 50px;
+
+    /* Scrollbar Styles */
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 10px;
+      border: 3px solid white;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .wrapper {
+      padding-right: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+          font-weight: 300;
+        }
+
+        button {
+          padding: 12px 24px;
+          background-color: #fece51;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        span {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+
+          img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+
+  .chat-container {
+    flex: 2;
+    background-color: #fcf5f3;
+    height: 100%;
+
+    .wrapper {
+      padding: 0 20px;
+    }
+  }
 }
