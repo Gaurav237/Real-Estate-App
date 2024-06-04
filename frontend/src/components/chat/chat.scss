@@ -28,7 +28,7 @@
     // ...end
 
     h1 {
-        font-weight: 300;
+      font-weight: 300;
     }
 
     .message {
@@ -56,5 +56,100 @@
 
   .chat-box {
     flex: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .top {
+      background-color: #fece51;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border-radius: 10px;
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        img {
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+
+      .close {
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 25px;
+      }
+    }
+
+    .center {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 10px;
+
+      overflow-y: scroll;
+      /* Scrollbar Styles */
+      &::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 10px;
+        border: 3px solid white;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      .chat-message {
+        width: 50%;
+
+        &.own {
+          align-self: flex-end;
+          text-align: right;
+        }
+
+        span {
+          font-size: 12px;
+          background-color: #fae7bbbb;
+          padding: 2px;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    .bottom {
+      border-top: 2px solid #f7c14b85;
+      height: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      textarea {
+        flex: 3;
+        height: 100%;
+        border: none;
+        padding: 20px;
+      }
+
+      button {
+        flex: 1;
+        height: 100%;
+        background-color: #fece51;
+        border: none;
+        border-radius: 5px;
+      }
+    }
   }
 }
