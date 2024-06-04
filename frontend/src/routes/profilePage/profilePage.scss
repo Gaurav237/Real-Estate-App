@@ -1,11 +1,23 @@
+@import "../../responsive.scss";
+
 .profile-page {
   display: flex;
   height: 100%;
+
+  @include md {
+    flex-direction: column;
+    overflow-y: scroll;
+  }
 
   .details {
     flex: 3;
     overflow-y: scroll;
     padding-bottom: 50px;
+
+    @include md {
+      flex: none;
+      height: max-content;
+    }
 
     /* Scrollbar Styles */
     &::-webkit-scrollbar {
@@ -71,6 +83,11 @@
     flex: 2;
     background-color: #fcf5f3;
     height: 100%;
+
+    @include md {
+      flex: none;
+      height: max-content;
+    }
 
     .wrapper {
       padding: 0 20px;
