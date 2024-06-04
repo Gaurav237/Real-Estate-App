@@ -67,6 +67,50 @@ nav {
             
         }
 
+        .user {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-right: 15px;
+            }
+
+            span {
+                @include sm {
+                    display: none;
+                }
+            }
+
+            .profile {
+                padding: 12px 24px;
+                background-color: #fece51;
+                cursor: pointer;
+                border: none;
+                border-radius: 10px;
+                margin-left: 25px;
+                position: relative;
+
+                .notification {
+                    position: absolute;
+                    top: -8px;
+                    right: -8px;
+                    background: red;
+                    color: #fcf5f3;
+                    border-radius: 50%;
+                    width: 26px;
+                    height: 26px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+
         .sign-up {
             background-color: #fece51;
             border-radius: 10px;

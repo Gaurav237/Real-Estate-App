@@ -4,6 +4,7 @@ import Layout from "./routes/layout/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SinglePage from "./routes/singlePage/SinglePage";
 import Login from "./routes/login/Login";
+import ProfilePage from "./routes/profilePage/ProfilePage";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,6 +27,10 @@ function App() {
         {
           path: "/login",
           element: <Login />,
+        },
+        {
+          path: "/profile",
+          element: <ProfilePage />,
         },
       ],
     },
