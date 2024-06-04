@@ -1,12 +1,24 @@
+@import "../../responsive.scss";
+
 .single-page {
   display: flex;
   height: 100%;
+
+  @include md {
+    flex-direction: column;
+    overflow: scroll;
+  }
 
   .details {
     flex: 3;
     height: 100%;
     padding-bottom: 30px;
     overflow-y: scroll;
+
+    @include md {
+      flex: none;
+      height: max-content;
+    }
 
     /* Scrollbar Styles */
     &::-webkit-scrollbar {
@@ -95,6 +107,13 @@
     height: 100%;
     padding-bottom: 30px;
 
+    @include md {
+      flex: none;
+      height: max-content;
+      padding-top: 30px;
+      margin-top: 20px;
+    }
+
     overflow-y: scroll;
     /* Scrollbar Styles */
     &::-webkit-scrollbar {
@@ -166,6 +185,10 @@
       .sizes {
         display: flex;
         justify-content: space-between;
+
+        @include lg {
+          font-size: 12px;
+        }
 
         .size {
           display: flex;
