@@ -75,6 +75,17 @@
             object-fit: cover;
           }
         }
+
+        .logout {
+          width: 100px;
+          background-color: rgba(255, 0, 0, 0.774);
+          border: 1px solid black;
+          border-radius: 10px;
+          color: white;
+          padding: 10px 20px;
+          cursor: pointer;
+          font-weight: bold;
+        }
       }
     }
   }
