@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./profilePage.scss";
 import List from "../../components/list/List";
 import Chat from "../../components/chat/Chat";
 import apiRequest from "../../lib/apiRequest";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const ProfilePage = () => {
+  const { updateUser, currentUser } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-      const res = apiRequest.post("/auth/logout");
-      localStorage.removeItem("user");
+      await apiRequest.post("/auth/logout");
+      updateUser(null);
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -28,17 +31,14 @@ const ProfilePage = () => {
           </div>
           <div className="info">
             <span>
-              Avatar:{" "}
-              <img
-                src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt=""
-              />
+              Avatar:
+              <img src={currentUser.avatar || "./noavatar.jpg"} alt="" />
             </span>
             <span>
-              Username: <b>John Cena</b>
+              Username: <b>{currentUser.username}</b>
             </span>
             <span>
-              Email: <b>john@gmail.com</b>
+              Email: <b>{currentUser.email}</b>
             </span>
             <button className="logout" onClick={handleLogout}>
               Logout

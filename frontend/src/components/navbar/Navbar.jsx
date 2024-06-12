@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./navbar.scss";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  const user = false;
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <nav>
@@ -20,13 +21,10 @@ const Navbar = () => {
         <Link to="/agents">Agents</Link>
       </div>
       <div className="right">
-        {user ? (
+        {currentUser ? (
           <div className="user">
-            <img
-              src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt=""
-            />
-            <span>John Cena</span>
+            <img src={currentUser.avatar || "./noavatar.jpg"} alt="" />
+            <span>{currentUser.username}</span>
             <Link to="/profile" className="profile">
               <div className="notification">3</div>
               <span>Profile</span>
@@ -34,8 +32,8 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-            <Link to="/signin">Sign In</Link>
-            <Link to="/signup" className="sign-up">
+            <Link to="/login">Sign In</Link>
+            <Link to="/register" className="sign-up">
               Sign Up
             </Link>
           </>
@@ -53,8 +51,8 @@ const Navbar = () => {
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/agents">Agents</Link>
-          <Link to="/signin">Sign In</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/login">Sign In</Link>
+          <Link to="/register">Sign Up</Link>
         </div>
       </div>
     </nav>
