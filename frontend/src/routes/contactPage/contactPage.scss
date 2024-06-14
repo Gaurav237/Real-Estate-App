@@ -1,0 +1,29 @@
+.contact-page {
+  display: flex;
+  height: 100%;
+
+  .left {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+
+    h1 {
+      font-size: 32px;
+      color: #333;
+      font-weight: 900;
+      text-decoration: underline;
+    }
+
+    p {
+      color: #4b4b4b;
+    }
+  }
+
+  .right {
+    flex: 2;
+    background-color: #fcf5f3;
+  }
+}

@@ -1,0 +1,40 @@
+.about-page {
+  display: flex;
+  height: 100%;
+
+  .left {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .content {
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        font-size: 32px;
+        font-weight: 900;
+        color: #333;
+        margin-bottom: 30px;
+        text-decoration: underline;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #666;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .right {
+    flex: 2;
+    background-color: #fcf5f3;
+    /* Add more styles for the right side if needed */
+  }
+}

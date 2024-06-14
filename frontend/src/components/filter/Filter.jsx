@@ -27,7 +27,7 @@ const Filter = () => {
   return (
     <div className="filter">
       <h1>
-        Search Results for <b>{searchParams.get("city").toUpperCase()}</b>
+        Search Results for <b>{searchParams.get("city")}</b>
       </h1>
       <div className="top">
         <div className="item">
