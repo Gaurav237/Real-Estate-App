@@ -1,4 +1,5 @@
 import prisma from "../lib/prisma.js";
+import jwt from "jsonwebtoken";
 
 export const getPosts = async (req, res) => {
   const query = req.query;
@@ -16,7 +17,7 @@ export const getPosts = async (req, res) => {
       },
     });
     // setTimeout(() => {
-      res.status(200).json(posts);
+    res.status(200).json(posts);
     // }, 2000);
   } catch (err) {
     console.log(err);
@@ -42,7 +43,30 @@ export const getPost = async (req, res) => {
       },
     });
 
-    res.status(200).json(post);
+    // for fetching a post is whether saved or not already
+    // this is required, bcoz for fetching a post we dont use verifyToken middleware
+    const token = req.cookies?.token;
+    if (token) {
+      jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, payload) => {
+        if (!err) {
+          const saved = await prisma.savedPost.findUnique({
+            where: {
+              userId_postId: {
+                postId: id,
+                userId: payload.id,
+              },
+            },
+          });
+          return res
+            .status(200)
+            .json({ ...post, isSaved: saved ? true : false });
+        } else {
+          res.status(200).json({ ...post, isSaved: false });
+        }
+      });
+    } else {
+      res.status(200).json({ ...post, isSaved: false });
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Failed to fetch post!" });
