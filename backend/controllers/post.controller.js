@@ -1,12 +1,19 @@
 import prisma from "../lib/prisma.js";
 
 export const getPosts = async (req, res) => {
+  const query = req.query;
   try {
     const posts = await prisma.post.findMany({
-      include: {
-        postDetail: true,
-        user: true,
-      },
+      where: {
+        city: query.city || undefined,
+        type: query.type || undefined,
+        property: query.property || undefined,
+        bedroom: parseInt(query.bedroom) || undefined,
+        price: {
+          gte: parseInt(query.minPrice) || 0,
+          lte: parseInt(query.maxPrice) || 100000000
+        }
+      }
     });
 
     res.status(200).json(posts);
@@ -28,8 +35,8 @@ export const getPost = async (req, res) => {
         user: {
           select: {
             username: true,
-            avatar: true
-          }
+            avatar: true,
+          },
         },
       },
     });
@@ -37,14 +44,14 @@ export const getPost = async (req, res) => {
     res.status(200).json(post);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "Failed to fetch post!"});
+    res.status(500).json({ message: "Failed to fetch post!" });
   }
 };
 
 export const addPost = async (req, res) => {
   const body = req.body;
   const tokenUserId = req.userId;
-  console.log({tokenUserId})
+  console.log({ tokenUserId });
   try {
     const newPost = await prisma.post.create({
       data: {
@@ -122,4 +129,3 @@ export const deletePosts = async (req, res) => {
     res.status(500).json({ message: "Failed to delete post!" });
   }
 };
-
