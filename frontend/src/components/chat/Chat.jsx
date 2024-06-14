@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./chat.scss";
 
 const Chat = () => {
-  const [chat, setChat] = useState(true);
+  const [chat, setChat] = useState(null);
 
   return (
     <div className="chat">
