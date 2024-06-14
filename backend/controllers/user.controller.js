@@ -127,3 +127,31 @@ export const savePost = async (req, res) => {
     res.status(500).json({ message: "Failed to save post!" });
   }
 };
+
+export const profilePosts = async (req, res) => {
+  try {
+    const tokenUserId = req.userId;
+
+    const userPosts = await prisma.post.findMany({
+      where: {
+        userId: tokenUserId,
+      },
+    });
+
+    const userSavedPosts = await prisma.savedPost.findMany({
+      where: {
+        userId: tokenUserId,
+      },
+      include: {
+        post: true,
+      },
+    });
+    // we need only post
+    const savedPosts = userSavedPosts.map((item) => item.post);
+
+    res.status(200).json({ userPosts, savedPosts });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to profile posts!" });
+  }
+};

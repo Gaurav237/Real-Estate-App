@@ -17,6 +17,7 @@ const SinglePage = () => {
     setSaved((prev) => !prev);
     if (!currentUser) {
       navigate("/login");
+      return;
     }
     try {
       await apiRequest.post("/user/save", {
